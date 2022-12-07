@@ -410,7 +410,7 @@
         <Setter Property="Foreground" Value="#555555" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="FontSize" Value="96" />
+        <Setter Property="FontSize" Value="90" />
         <Setter Property="MaxWidth" Value="96" />
         <Setter Property="Height" Value="Auto" />
         <Setter Property="MaxHeight" Value="96" />
