@@ -96,8 +96,9 @@ namespace Flow.Launcher.Plugin.Program.Programs
                         var visualElement = appNode.SelectSingleNode($"*[local-name()='VisualElements']", namespaceManager);
                         var logoUri = visualElement?.Attributes[logoName]?.Value;
                         app.LogoPath = app.LogoPathFromUri(logoUri, (64, 64));
-                        var previewUri = visualElement?.Attributes[bigLogoName]?.Value;
-                        app.PreviewImagePath = app.LogoPathFromUri(previewUri, (128, 128));
+                        // use small logo or may have a big margin
+                        var previewUri = visualElement?.Attributes[logoName]?.Value;
+                        app.PreviewImagePath = app.LogoPathFromUri(previewUri, (256, 256));
                     }
                 }
             }
@@ -548,31 +549,35 @@ namespace Flow.Launcher.Plugin.Program.Programs
                             return string.Empty;
                         }
 
-                        var logos = Directory.EnumerateFiles(logoDir, $"{logoNamePrefix}*{extension}");
+                        var logos = Directory.EnumerateFiles(logoDir, $"{logoNamePrefix}*{extension}").ToArray();
 
                         // Currently we don't care which one to choose
                         // Just ignore all qualifiers
                         // select like logo.[xxx_yyy].png
                         // https://learn.microsoft.com/en-us/windows/uwp/app-resources/tailor-resources-lang-scale-contrast
 
+                        // todo select from file name like pt run
                         var selected = logos.FirstOrDefault();
                         var closest = selected;
-                        int min = int.MaxValue;
-                        foreach (var logo in logos)
+                        if (logos.Length > 1)
                         {
-
-                            var imageStream = File.OpenRead(logo);
-                            var decoder = BitmapDecoder.Create(imageStream, BitmapCreateOptions.IgnoreColorProfile, BitmapCacheOption.None);
-                            var height = decoder.Frames[0].PixelHeight;
-                            var width = decoder.Frames[0].PixelWidth;
-                            int pixelCountDiff = Math.Abs(height * width - px);
-                            if (pixelCountDiff < min)
+                            int min = int.MaxValue;
+                            foreach (var logo in logos)
                             {
-                                // try to find the closest to desired size
-                                closest = logo;
-                                if (pixelCountDiff == 0)
-                                    break;  // found
-                                min = pixelCountDiff;
+
+                                var imageStream = File.OpenRead(logo);
+                                var decoder = BitmapDecoder.Create(imageStream, BitmapCreateOptions.IgnoreColorProfile, BitmapCacheOption.None);
+                                var height = decoder.Frames[0].PixelHeight;
+                                var width = decoder.Frames[0].PixelWidth;
+                                int pixelCountDiff = Math.Abs(height * width - px);
+                                if (pixelCountDiff < min)
+                                {
+                                    // try to find the closest to desired size
+                                    closest = logo;
+                                    if (pixelCountDiff == 0)
+                                        break;  // found
+                                    min = pixelCountDiff;
+                                }
                             }
                         }
 
