@@ -1362,11 +1362,14 @@ namespace Flow.Launcher.ViewModel
                     Win32Helper.DWMSetCloakForWindow(mainWindow, false);
 
                     // 📌 Restore UI elements
-                    mainWindow.ClockPanel.Visibility = Visibility.Visible;
-                    //mainWindow.SearchIcon.Visibility = Visibility.Visible;
-                    SearchIconVisibility = Visibility.Visible;
+                    if(Settings.LastQueryMode == LastQueryMode.Empty || mainWindow.QueryTextBox.Text.Length == 0){
+                        mainWindow.ClockPanel.Visibility = Visibility.Visible;
+                        SearchIconVisibility = Visibility.Visible;
+                    }
+                    SearchIconVisibility = PluginIconSource == null ? Visibility.Visible : Visibility.Hidden;
+                    
                 }
-
+                
                 // Update WPF properties
                 MainWindowVisibility = Visibility.Visible;
                 MainWindowOpacity = 1;

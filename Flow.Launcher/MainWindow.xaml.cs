@@ -218,17 +218,17 @@ namespace Flow.Launcher
                 }
             };
 
-            // ✅ QueryTextBox.Text 변경 감지 (글자 수 1 이상일 때만 동작하도록 수정)
+            // Detect QueryTextBox.Text changes (trigger only when text length is 1 or more)
             QueryTextBox.TextChanged += (sender, e) => UpdateClockPanelVisibility();
 
-            // ✅ ContextMenu.Visibility 변경 감지
+            // Detect ContextMenu.Visibility changes
             DependencyPropertyDescriptor
                 .FromProperty(VisibilityProperty, typeof(ContextMenu))
                 .AddValueChanged(ContextMenu, (s, e) => UpdateClockPanelVisibility());
 
-            // ✅ History.Visibility 변경 감지
+            // Detect History.Visibility changes
             DependencyPropertyDescriptor
-                .FromProperty(VisibilityProperty, typeof(StackPanel)) // History는 StackPanel이라고 가정
+                .FromProperty(VisibilityProperty, typeof(StackPanel)) 
                 .AddValueChanged(History, (s, e) => UpdateClockPanelVisibility());
         }
 
