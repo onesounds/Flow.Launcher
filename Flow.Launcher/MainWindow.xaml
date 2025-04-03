@@ -218,6 +218,20 @@
             <Grid x:Name="QueryBoxArea">
                 <Border MinHeight="30" Style="{DynamicResource QueryBoxBgStyle}">
                     <Grid>
+                        <Border
+                            Margin="12"
+                            HorizontalAlignment="Left"
+                            CornerRadius="4"
+                            Visibility="{Binding ActionKeywordVisibility}">
+                            <Border.Background>#A7514F4F</Border.Background>
+                            <TextBlock
+                                x:Name="ActionKeywordBox"
+                                Margin="12 4 12 4"
+                                VerticalAlignment="Center"
+                                FontSize="20"
+                                Foreground="White"
+                                Text="" />
+                        </Border>
                         <TextBox
                             x:Name="QueryTextPlaceholderBox"
                             Height="{Binding MainWindowHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

@@ -761,6 +761,8 @@ namespace Flow.Launcher.ViewModel
 
         public Visibility ClockPanelVisibility { get; set; }
         public Visibility SearchIconVisibility { get; set; }
+
+        public Visibility ActionKeywordVisibility { get; set; }
         public double ClockPanelOpacity { get; set; } = 1;
         public double SearchIconOpacity { get; set; } = 1;
 
