@@ -134,6 +134,7 @@
     <system:String x:Key="actionKeywordsTooltip">Change Action Keywords</system:String>
     <system:String x:Key="pluginSearchDelayTime">Plugin seach delay time</system:String>
     <system:String x:Key="pluginSearchDelayTimeTooltip">Change Plugin Seach Delay Time</system:String>
+    <system:String x:Key="EnabledCombobox">Enabled</system:String>
     <system:String x:Key="currentPriority">Current Priority</system:String>
     <system:String x:Key="newPriority">New Priority</system:String>
     <system:String x:Key="priority">Priority</system:String>
@@ -150,6 +151,7 @@
     <system:String x:Key="failedToRemovePluginCacheTitle">Fail to remove plugin cache</system:String>
     <system:String x:Key="failedToRemovePluginCacheMessage">Plugins: {0} - Fail to remove plugin cache files, please remove them manually</system:String>
     <system:String x:Key="default">Default</system:String>
+
 
     <!--  Setting Plugin Store  -->
     <system:String x:Key="pluginStore">Plugin Store</system:String>

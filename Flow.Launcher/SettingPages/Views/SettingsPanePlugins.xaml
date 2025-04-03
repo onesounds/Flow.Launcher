@@ -38,12 +38,17 @@
                 DockPanel.Dock="Right"
                 Orientation="Horizontal">
                 <ComboBox
-                    Width="120"
                     Height="34"
                     Margin="0 0 10 0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
-                    FontSize="14" />
+                    FontSize="14" SelectedIndex="0">
+                    <ComboBox.Items>
+                        <ComboBoxItem Content="{DynamicResource EnabledCombobox}" />
+                        <ComboBoxItem Content="{DynamicResource priority}" />
+                        <ComboBoxItem Content="{DynamicResource searchDelay}" />
+                    </ComboBox.Items>
+                </ComboBox>
                 <TextBox
                     Name="PluginFilterTextbox"
                     Width="150"
