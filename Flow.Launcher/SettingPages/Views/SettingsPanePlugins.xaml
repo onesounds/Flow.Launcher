@@ -44,9 +44,9 @@
                     VerticalAlignment="Center"
                     FontSize="14" SelectedIndex="0">
                     <ComboBox.Items>
-                        <ComboBoxItem Content="{DynamicResource EnabledCombobox}" />
-                        <ComboBoxItem Content="{DynamicResource priority}" />
-                        <ComboBoxItem Content="{DynamicResource searchDelay}" />
+                        <ComboBoxItem Name="Enabled" Content="{DynamicResource EnabledCombobox}" />
+                        <ComboBoxItem Name="Priority" Content="{DynamicResource priority}" />
+                        <ComboBoxItem Name="SearchDelay" Content="{DynamicResource searchDelay}" />
                     </ComboBox.Items>
                 </ComboBox>
                 <TextBox

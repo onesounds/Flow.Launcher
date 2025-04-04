@@ -48,7 +48,7 @@
                         Grid.Column="2"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal">
-                        <TextBlock
+                        <!--<TextBlock
                             Margin="0 0 8 0"
                             VerticalAlignment="Center"
                             FontSize="12"
@@ -62,7 +62,7 @@
                             Content="{Binding Priority}"
                             Cursor="Hand"
                             ToolTip="{DynamicResource priorityToolTip}">
-                            <!--#region Priority Button Style-->
+                            ~1~#region Priority Button Style@1@
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="2" />
@@ -82,14 +82,21 @@
                                     </Style.Triggers>
                                 </Style>
                             </Button.Style>
-                            <!--#endregion-->
-                        </Button>
-
-                        <ui:ToggleSwitch
+                            ~1~#endregion@1@
+                        </Button> -->
+                        <ui:ToggleSwitch x:Name="EnabledToggleSwitch"
                             Margin="0 0 8 0"
                             IsOn="{Binding PluginState}"
                             OffContent="{DynamicResource disable}"
                             OnContent="{DynamicResource enable}" />
+                        <StackPanel x:Name="PriorityNumberBox" Orientation="Horizontal" Margin="0 0 8 0">
+                            <TextBlock VerticalAlignment="Center" Text="{DynamicResource priority}" Margin="0 0 8 0"/>
+                            <ui:NumberBox SpinButtonPlacementMode="Inline"/>
+                        </StackPanel>
+                        <StackPanel x:Name="SearchDelayTextBox" Orientation="Horizontal" Margin="0 0 8 0">
+                            <TextBlock VerticalAlignment="Center" Text="{DynamicResource searchDelay}" Margin="0 0 8 0"/> 
+                            <TextBox></TextBox>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
             </Border>
